@@ -1,0 +1,15 @@
+{
+    "hello": [
+        "hello there",
+        "hello",
+        "hi"
+    ],
+    "what time is it": {
+        "txt": "it is {}",
+        "fun": {
+            "name": "getCurrentTime",
+            "param": null
+        }
+    },
+    "-": "this is what i have found for you"
+}

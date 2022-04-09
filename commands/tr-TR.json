@@ -1,0 +1,15 @@
+{
+    "selam": [
+        "selam",
+        "sana da selam",
+        "merhaba"
+    ],
+    "saat kaç": {
+        "txt": "saat {}",
+        "fun": {
+            "name": "getCurrentTime",
+            "param": null
+        }
+    },
+    "-": "senin için bunu buldum"
+}
