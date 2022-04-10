@@ -11,5 +11,12 @@
             "param": null
         }
     },
+    "turn off": {
+        "txt": "Good bye",
+        "fun": {
+            "name": "closeApp",
+            "param": null
+        }
+    },
     "-": "this is what i have found for you"
 }

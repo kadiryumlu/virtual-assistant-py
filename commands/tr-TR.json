@@ -11,5 +11,12 @@
             "param": null
         }
     },
+    "kapat": {
+        "txt": "Görüşürüz",
+        "fun": {
+            "name": "closeApp",
+            "param": null
+        }
+    },
     "-": "senin için bunu buldum"
 }

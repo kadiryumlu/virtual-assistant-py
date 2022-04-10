@@ -1,7 +1,11 @@
 import sys
+import os
+import time
 import json
 from numpy import random
 import speech_recognition as sr
+from gtts import gTTS
+from playsound import playsound
 import special_commands
 
 
@@ -32,6 +36,13 @@ def listen(lang):
         print(command)
         return command
 
+def speak(text, lang):
+    tts = gTTS(text, lang=lang.split('-')[0])
+    file = f'tts-{time.time()}.mp3'
+    tts.save(file)
+    playsound(file)
+    os.remove(file)
+
 def response(commands, command, lang):
     found = findResponse(commands, command)
 
@@ -39,6 +50,7 @@ def response(commands, command, lang):
         if(type(found) == list):
             choise = random.choice(found)
             print(choise)
+            speak(choise, lang)
         elif(type(found) == dict):
             unformatted = found.get('txt')
             function_name = found.get('fun').get('name')
@@ -47,9 +59,11 @@ def response(commands, command, lang):
             r = fun(function_param) if function_param  else fun()
             text = unformatted.format(r)
             print(text)
+            speak(text, lang)
     else:
         getattr(special_commands, 'searchInGoogle')(command)
         print(commands.get(found))
+        speak(commands.get(found), lang)
 
 def main(argv):
     lang = 'en-EN'
@@ -59,12 +73,12 @@ def main(argv):
 
     command_file = f'./commands/{lang}.json'
     commands = load_json(command_file)
-    print(commands)
+    #print(commands)
 
-    print("...")
-
-    command = listen(lang)
-    response(commands, command, lang)
+    while True:
+        print("...")
+        command = listen(lang)
+        response(commands, command, lang)
 
 
 if __name__ == "__main__":
